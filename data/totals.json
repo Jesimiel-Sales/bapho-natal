@@ -1,3 +1,18 @@
 {
- "snapshots": []
+ "snapshots": [
+  {
+   "date": "2026-11-01",
+   "songs": {
+    "mariah": {
+     "spotify_total": 2542275373,
+     "spotify_daily": 554102
+    },
+    "wham": {
+     "spotify_total": 2255740204,
+     "spotify_daily": 656027
+    }
+   }
+  }
+ ],
+ "updated": "2026-11-01T23:32:59+00:00"
 }
