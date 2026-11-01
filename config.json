@@ -1,0 +1,41 @@
+{
+  "site_title": "BAPHO! Especial de Natal",
+  "season_start": "10-01",
+  "season_end": "01-31",
+  "regions": {
+    "global": {
+      "label": "Mundo",
+      "kworb_column": "Global"
+    },
+    "br": {
+      "label": "Brasil",
+      "kworb_column": "BR"
+    }
+  },
+  "songs": [
+    {
+      "key": "mariah",
+      "short": "Mariah",
+      "alias": "A dona de dezembro",
+      "title": "All I Want for Christmas Is You",
+      "artist": "Mariah Carey",
+      "since": 1994,
+      "spotify_track_id": "0bYg9bo50gSsH3LtXe2SQn",
+      "spotify_artist_id": "4iHNK0tOyZPYnBU7nGAgpQ",
+      "youtube_video_id": "yXQViqx6GMY",
+      "color": "#FF1F8E"
+    },
+    {
+      "key": "wham",
+      "short": "Wham!",
+      "alias": "Os boys da sofrência",
+      "title": "Last Christmas",
+      "artist": "Wham! (George Michael)",
+      "since": 1984,
+      "spotify_track_id": "2FRnf9qhLbvw8fu4IBXx78",
+      "spotify_artist_id": "5lpH0xAS4fVfLkACg9DAuM",
+      "youtube_video_id": "E8gmARGvPlI",
+      "color": "#0FA8E0"
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BAPHO! Especial de Natal: Mariah x Wham!</title>
+  <meta name="description" content="O barraco de Natal do século: Mariah Carey x Wham!, Natal a Natal, no Spotify do mundo e do Brasil. Placar, replay do babado e teste: qual diva você é?">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bowlby+One&family=Nunito:ital,wght@0,400;0,700;0,900;1,700&family=Pacifico&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <!--
+    oi bb, se vc tá lendo o código-fonte vc é tão nerd quanto eu <3
+    feito com amor, CSS e zero paciência. dados reais, revista fictícia.
+  -->
+</head>
+<body>
+
+  <!-- ===================== A CAPA ===================== -->
+  <header class="cover" id="capa">
+    <div class="edition">
+      <span>Edição especial de Natal</span>
+      <span class="region-wrap">
+        <span class="hand">escolhe o babado:</span>
+        <span class="tabs" id="region" role="radiogroup" aria-label="Região"></span>
+      </span>
+      <span class="price">nº 12 · dez · R$ 4,90</span>
+    </div>
+
+    <h1 class="masthead">BAPHO<em>!</em></h1>
+    <p class="tagline">a revista que não tem medo de barraco</p>
+
+    <div class="cover-grid">
+      <nav class="lines left" aria-label="Chamadas da capa">
+        <a class="line" href="#rounds-page">
+          <span class="kick">Exclusivo</span>
+          <span class="big">Natal a Natal</span>
+          <span class="dek">quem levou cada dezembro desde 2017</span>
+        </a>
+        <a class="line pink" href="#teste">
+          <span class="kick">Teste</span>
+          <span class="big">Você é time Mariah ou time Wham!?</span>
+          <span class="dek">5 perguntas que vão te expor</span>
+        </a>
+        <a class="line" href="#raio-x">
+          <span class="kick">Raio-X</span>
+          <span class="big">Dias no #1, recordes e humilhações</span>
+        </a>
+      </nav>
+
+      <div class="stage" aria-live="polite">
+        <span class="sparkle s1"></span><span class="sparkle s2"></span><span class="sparkle s3"></span>
+        <span class="sparkle s4"></span><span class="sparkle s5"></span>
+
+        <div class="portrait" data-side="0">
+          <svg class="crown" viewBox="0 0 64 40" aria-hidden="true"><path d="M4 36 L8 10 L22 24 L32 4 L42 24 L56 10 L60 36 Z"/></svg>
+          <span class="initial">M</span>
+          <span class="ribbon"><b class="name"></b><small class="alias"></small></span>
+        </div>
+        <div class="portrait" data-side="1">
+          <svg class="crown" viewBox="0 0 64 40" aria-hidden="true"><path d="M4 36 L8 10 L22 24 L32 4 L42 24 L56 10 L60 36 Z"/></svg>
+          <span class="initial">W!</span>
+          <span class="ribbon"><b class="name"></b><small class="alias"></small></span>
+        </div>
+
+        <div class="score-wrap"><div class="burst score">
+          <small>placar de Natais</small>
+          <span class="digits"><b id="sa">0</b><i>x</i><b id="sb">0</b></span>
+          <small id="score-sub"></small>
+        </div></div>
+      </div>
+
+      <nav class="lines right" aria-label="Mais chamadas">
+        <a class="line" href="#barraco">
+          <span class="kick">Bafão</span>
+          <span class="big" id="cl-surra">A maior surra da história</span>
+          <span class="dek" id="cl-surra-dek"></span>
+        </a>
+        <a class="line blue" href="#rounds-page">
+          <span class="kick" id="cl-live-kick">Ao vivo</span>
+          <span class="big" id="cl-live">O Natal já começou</span>
+        </a>
+        <a class="line" href="#capa" id="cl-region">
+          <span class="kick">Polêmica</span>
+          <span class="big" id="cl-region-big">Mundo x Brasil</span>
+          <span class="dek" id="cl-region-dek"></span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="cover-foot">
+      <div>
+        <h2 class="headline">O <mark>barraco</mark> de Natal do século</h2>
+        <p class="dek" id="headline"></p>
+      </div>
+      <div class="barcode" aria-hidden="true"><span></span><small>7 891234 567890</small></div>
+    </div>
+    <span class="burst sticker-exclusive" aria-hidden="true">só aqui!</span>
+  </header>
+
+  <div class="ticker" aria-hidden="true">
+    <span class="flash">Plantão do babado</span>
+    <div class="track-wrap"><div class="track" id="ticker"></div></div>
+  </div>
+
+  <main>
+    <!-- ===================== NATAL A NATAL ===================== -->
+    <section class="page" id="rounds-page">
+      <header class="page-head">
+        <span class="tag">Matéria de capa</span>
+        <h2><mark>Natal a Natal:</mark> quem humilhou quem</h2>
+        <p class="dek">Cada dezembro é um round. Ganha quem somar mais streams no Top 200 entre outubro e janeiro. Clica na foto pra ver o barraco completo, porque eu sei que você é curiosa.</p>
+        <span class="pg">pág. 12</span>
+      </header>
+      <div class="rounds" id="rounds"></div>
+    </section>
+
+    <!-- ===================== O BARRACO AO VIVO ===================== -->
+    <section class="page replay" id="barraco">
+      <header class="page-head">
+        <span class="tag pink">Assista ao barraco</span>
+        <h2 id="replay-title">O barraco</h2>
+        <p class="dek big-quote" id="narrator"></p>
+        <span class="pg">pág. 18</span>
+      </header>
+
+      <div class="race">
+        <div class="clock"><small id="clock-unit">dia</small><span id="clock-date">--/--</span><small id="clock-day"></small></div>
+        <div class="lanes" id="lanes"></div>
+      </div>
+
+      <div class="controls">
+        <button class="glossy" id="play" type="button">Assistir ao barraco</button>
+        <span class="tabs small" id="speed" role="radiogroup" aria-label="Velocidade">
+          <button data-v="1" aria-pressed="true">normal</button>
+          <button data-v="4" aria-pressed="false">fofoca rápida</button>
+        </span>
+        <input type="range" id="scrub" min="0" max="0" value="0" aria-label="Linha do tempo do barraco">
+      </div>
+
+      <div class="replay-grid">
+        <div class="chart-card">
+          <p class="hand note">streams por dia, amor. linha que some = fora do Top 200</p>
+          <div class="chart-box"><canvas id="race-chart" aria-label="Streams por dia no round"></canvas></div>
+        </div>
+        <div class="tw">
+          <div class="tw-head"><span class="av">F</span><div><b>@fofoqueira_natal</b><small>cobrindo o babado em tempo real</small></div></div>
+          <ol class="tw-feed" id="log" aria-label="Lances do barraco"></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== RAIO-X ===================== -->
+    <section class="page" id="raio-x">
+      <header class="page-head">
+        <span class="tag">Raio-X</span>
+        <h2>Raio-X das <mark>divas</mark></h2>
+        <p class="dek" id="tape-sub"></p>
+        <span class="pg">pág. 24</span>
+      </header>
+      <div class="xray-names"><span class="a"></span><span class="b"></span></div>
+      <div class="tape" id="tape"></div>
+      <div class="postits" id="best"></div>
+    </section>
+
+    <!-- ===================== TESTE ===================== -->
+    <section class="page quiz" id="teste">
+      <header class="page-head">
+        <span class="tag pink">Teste</span>
+        <h2>Qual diva de Natal <mark>você é?</mark></h2>
+        <p class="dek">Responde com sinceridade, que a gente sabe quando você mente.</p>
+        <span class="pg">pág. 42</span>
+      </header>
+      <form id="quiz-form"></form>
+      <div class="quiz-result" id="quiz-result" hidden></div>
+    </section>
+
+    <!-- ===================== FOFOCA DE BASTIDOR ===================== -->
+    <section class="page" id="bastidor">
+      <header class="page-head">
+        <span class="tag">Fofoca de bastidor</span>
+        <h2>Os números <mark>da vida real</mark></h2>
+        <p class="dek">Contagem completa do ano inteiro, dentro e fora do chart: contador do Spotify mais views do clipe oficial no YouTube. Coletado todo santo dia desde que esta revista foi pro ar. Só no agregado mundial, sorry Brasil.</p>
+        <span class="pg">pág. 50</span>
+      </header>
+      <div class="table-wrap"><table class="totals" id="totals"></table></div>
+      <div class="chart-box short"><canvas id="growth" aria-label="Crescimento diário"></canvas></div>
+      <p class="empty" id="growth-empty" hidden></p>
+    </section>
+
+    <!-- ===================== LETRAS MIÚDAS ===================== -->
+    <section class="page fine" id="regras">
+      <h2>Letras miúdas <span class="hand">(lê sim, depois não vem chorar)</span></h2>
+      <ul>
+        <li><strong>Round:</strong> cada Natal vai de 1º de outubro a 31 de janeiro. "Natal 2025" é a temporada out/2025 a jan/2026.</li>
+        <li><strong>Pontuação:</strong> streams exatos do Spotify Charts, somados só nos períodos em que cada música estava no Top 200 da região. Natais antigos usam o chart semanal (o diário público só guarda as últimas semanas); a partir da coleta diária, o round passa a usar o chart diário quando ele cobre a temporada inteira. As duas divas são sempre medidas pela mesma régua no mesmo Natal. Fora do chart o Spotify não publica número, então não inventamos.</li>
+        <li><strong>Vereditos:</strong> <b>Humilhou</b> a partir de 20% de vantagem · <b>Arrasou</b> de 8% a 20% · <b>Suadinho</b> de 3% a 8% · <b>Foto-finish</b> abaixo de 3% · <b>Nem apareceu</b> quando só uma entrou no chart (W.O.).</li>
+        <li><strong>Maior dia e recordes:</strong> só contam Natais com chart diário, pra não comparar semana com dia.</li>
+        <li><strong>Brasil:</strong> as duas ficam poucos dias no Top 200 brasileiro, então os rounds BR são curtinhos e alguns acabam em W.O.</li>
+        <li><strong>Ao vivo:</strong> o Natal em andamento só entra no placar depois de 31 de janeiro. Calma.</li>
+        <li><strong>Aviso legal:</strong> BAPHO! é uma revista fictícia e a fofoqueira também. Os números são reais. O shade é carinhoso.</li>
+      </ul>
+      <p class="source" id="updated"></p>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
