@@ -70,6 +70,9 @@
 
   // ------------------------------------------------------------ dados -> rounds
   const xmasYear = (iso) => { const [y, m] = iso.split("-").map(Number); return m >= 10 ? y : m <= 1 ? y - 1 : null; };
+  // todos os dias de chart diário guardados (inclui Natais que pontuam pela régua semanal)
+  const dailyOf = (i, region) => charts.songs?.[cfg.songs[i].key]?.daily?.[region || S.region] || [];
+  const dailyPeak = (i, region) => dailyOf(i, region).reduce((m, r) => (!m || r[2] > m[2] ? r : m), null);
   const seriesOf = (i, region) => charts.songs?.[cfg.songs[i].key]?.[region || S.region] || [];
 
   function stats(rows) {
@@ -197,10 +200,10 @@
   function renderTicker() {
     const items = rounds.filter((r) => r.w != null).slice().reverse()
       .map((r) => `<span><b>Natal ${r.year}${r.live ? " ao vivo" : ""}</b>${r.line}</span>`);
-    const all = rounds.filter((r) => !r.wk).flatMap((r) => [[0, r.a], [1, r.b]].filter(([, s]) => s).map(([i, s]) => [i, s.peak]));
+    const all = [0, 1].map((i) => [i, dailyPeak(i)]).filter(([, p]) => p);
     if (all.length) {
       const [i, p] = all.reduce((m, x) => (x[1][2] > m[1][2] ? x : m));
-      items.unshift(`<span><b>Recorde</b>Maior dia da história nessa região: ${short(i)}, ${nf.format(p[2])} streams em ${fmtD(p[0], true)}. Isso é que é hino.</span>`);
+      items.unshift(`<span><b>Recorde</b>Maior dia já registrado nessa região: ${short(i)}, ${nf.format(p[2])} streams em ${fmtD(p[0], true)}. Isso é que é hino.</span>`);
     }
     if (!items.length) items.push("<span><b>Plantão</b>As divas tão no camarim. O babado começa depois da primeira coleta de dados.</span>");
     $("#ticker").innerHTML = items.join("") + items.join(""); // duplicado pro loop não ter buraco
@@ -388,7 +391,7 @@
       return {
         wins: done.filter((r) => r.w === i).length,
         total: ss.reduce((s, x) => s + x.total, 0),
-        peak: rounds.filter((r) => !r.wk).map((r) => (i ? r.b : r.a)).filter(Boolean).reduce((m, x) => Math.max(m, x.peak[2]), 0),
+        peak: dailyPeak(i)?.[2] || 0,
         ones: ss.reduce((s, x) => s + x.ones, 0),
         duel: rounds.reduce((s, r) => s + r.duel[i], 0),
         ko: done.filter((r) => r.w === i && r.kind === "ko").length,
