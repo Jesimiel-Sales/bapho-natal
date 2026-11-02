@@ -286,7 +286,7 @@
     replay = { R, axis, daily, cum, events, i: axis.length - 1, max: Math.max(cum[0].at(-1), cum[1].at(-1), 1) };
 
     $("#replay-title").innerHTML = `O barraco do <mark>Natal ${R.year}</mark>`;
-    $("#race-note").textContent = `streams por ${R.wk ? "semana (Natal antigo, só tem chart semanal)" : "dia"}, amor. linha que some = fora do Top 200`;
+    $("#race-note").textContent = `streams por ${R.wk ? "semana" : "dia"}, amor${R.wk ? " (esse Natal só tem chart semanal)" : ""}. linha que some = fora do Top 200`;
     $("#lanes").innerHTML = [0, 1].map((i) =>
       `<div class="lane" data-side="${i}"><span class="who">${CROWN}${short(i)}</span><div class="bar"><i></i><span>0</span></div></div>`).join("");
     $("#scrub").max = axis.length - 1;
