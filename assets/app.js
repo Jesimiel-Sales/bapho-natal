@@ -449,6 +449,7 @@
       const score = ans.reduce((s, x) => s + +x.value, 0);
       const side = score >= 3 ? 1 : 0;
       const [title, txt] = RESULT[side];
+      track(`teste-${side ? "wham" : "mariah"}`, `Teste: deu ${title}`);
       const box = $("#quiz-result");
       box.className = `quiz-result ${cls(side)}`;
       box.hidden = false;
@@ -456,7 +457,7 @@
       box.innerHTML = `<small>Você é</small><h3>${title}!</h3><p>${txt}</p>
         <span class="tabs"><button type="button" id="share">Copiar pro Twitter</button><button type="button" id="redo">Refazer</button></span>`;
       $("#share").addEventListener("click", async (ev) => {
-        try { await navigator.clipboard.writeText(share); ev.target.textContent = "Copiado! Agora posta"; }
+        try { await navigator.clipboard.writeText(share); ev.target.textContent = "Copiado! Agora posta"; track("teste-compartilhou", "Teste: copiou pra postar"); }
         catch { ev.target.textContent = "Seu navegador não deixou :("; }
       });
       $("#redo").addEventListener("click", () => { form.reset(); box.hidden = true; form.scrollIntoView({ behavior: REDUCE ? "auto" : "smooth" }); });
@@ -554,6 +555,21 @@
     buildReplay(false);
   }
 
+  // ------------------------------------------------------------ contador de visitas (GoatCounter, sem cookies)
+  // liga quando config.json tiver "goatcounter": "<código>"; eventos aparecem no painel como páginas
+  function loadCounter() {
+    const code = (cfg.goatcounter || "").trim();
+    if (!code || /^(localhost|127\.)/.test(location.hostname)) return;
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = "https://gc.zgo.at/count.js";
+    s.dataset.goatcounter = `https://${code}.goatcounter.com/count`;
+    document.head.appendChild(s);
+  }
+  const track = (path, title) => {
+    try { window.goatcounter?.count?.({ path, title, event: true }); } catch { /* contador é opcional */ }
+  };
+
   async function init() {
     [cfg, charts, totals] = await Promise.all([
       getJSON("config.json", null),
@@ -561,6 +577,7 @@
       getJSON("data/totals.json", { snapshots: [] }),
     ]);
     if (!cfg) { $("#headline").textContent = "config.json sumiu. Quem apagou? Confessa."; return; }
+    loadCounter();
 
     document.querySelectorAll(".portrait").forEach((p) => {
       const s = cfg.songs[+p.dataset.side];
@@ -573,7 +590,8 @@
     $("#updated").textContent = (upd
       ? `Atualizado em ${new Date(upd).toLocaleString("pt-BR", { dateStyle: "long", timeStyle: "short" })}. `
       : "Ainda sem dados: rode o workflow de coleta uma vez. ")
-      + "Fontes: Spotify Charts (via kworb.net) e YouTube Data API.";
+      + "Fontes: Spotify Charts (via kworb.net) e YouTube Data API."
+      + (cfg.goatcounter ? " Visitas contadas pelo GoatCounter, sem cookies e sem dado pessoal." : "");
 
     $("#region").innerHTML = Object.entries(cfg.regions)
       .map(([k, r]) => `<button type="button" data-v="${k}" aria-pressed="${k === S.region}">${r.label}</button>`).join("");
@@ -581,6 +599,7 @@
       const b = e.target.closest("button");
       if (!b || b.dataset.v === S.region) return;
       S.region = b.dataset.v;
+      track(`regiao-${S.region}`, `Trocou para ${cfg.regions[S.region].label}`);
       $("#region").querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", x === b));
       renderRegion();
     });
@@ -591,7 +610,11 @@
       selectRound(+b.dataset.year, true);
       $("#barraco").scrollIntoView({ behavior: REDUCE ? "auto" : "smooth", block: "start" });
     });
-    $("#play").addEventListener("click", () => (replay && replay.timer ? stopReplay() : playReplay()));
+    $("#play").addEventListener("click", () => {
+      if (replay && replay.timer) return stopReplay();
+      track(`barraco-${S.year}`, `Assistiu ao barraco de ${S.year}`);
+      playReplay();
+    });
     $("#speed").addEventListener("click", (e) => {
       const b = e.target.closest("button");
       if (!b) return;
