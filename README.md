@@ -1,5 +1,9 @@
 # BAPHO! Especial de Natal
 
+[![Capa da BAPHO!](assets/social/bapho-1-capa.jpg)](https://jesimiel-sales.github.io/bapho-natal/)
+
+**Site:** https://jesimiel-sales.github.io/bapho-natal/
+
 Mariah Carey x Wham!, Natal a Natal, no Spotify do mundo e do Brasil, numa capa de revista teen de 2009. Placar de Natais vencidos, polaroids de cada ano com veredito (Humilhou, Arrasou, Suadinho, Foto-finish, Nem apareceu), replay animado do barraco narrado pela @fofoqueira_natal, raio-x das divas e o teste "Qual diva de Natal você é?".
 
 Revista fictícia, números reais.
