@@ -30,15 +30,15 @@
    "date": "2026-11-03",
    "songs": {
     "mariah": {
-     "spotify_total": 2542946739,
-     "spotify_daily": 671366
+     "spotify_total": 2544883479,
+     "spotify_daily": 1936740
     },
     "wham": {
-     "spotify_total": 2256464071,
-     "spotify_daily": 723867
+     "spotify_total": 2258278178,
+     "spotify_daily": 1814107
     }
    }
   }
  ],
- "updated": "2026-11-03T00:11:42+00:00"
+ "updated": "2026-11-03T09:04:32+00:00"
 }
