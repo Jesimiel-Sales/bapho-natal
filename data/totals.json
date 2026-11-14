@@ -168,7 +168,20 @@
      "spotify_daily": 2361597
     }
    }
+  },
+  {
+   "date": "2026-11-14",
+   "songs": {
+    "mariah": {
+     "spotify_total": 2566151737,
+     "spotify_daily": 2104524
+    },
+    "wham": {
+     "spotify_total": 2281963836,
+     "spotify_daily": 2349911
+    }
+   }
   }
  ],
- "updated": "2026-11-13T20:55:32+00:00"
+ "updated": "2026-11-14T19:16:18+00:00"
 }
