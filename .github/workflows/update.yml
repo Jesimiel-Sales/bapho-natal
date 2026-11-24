@@ -44,12 +44,11 @@ jobs:
             git push
           fi
 
-  publicar:
+  # Empacotar e publicar ficam em jobs separados (desenho recomendado pelo
+  # GitHub): o deploy só começa depois que o pacote do site foi finalizado.
+  montar:
     needs: coletar
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -64,5 +63,13 @@ jobs:
       - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
+
+  publicar:
+    needs: montar
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
       - id: deploy
         uses: actions/deploy-pages@v5
